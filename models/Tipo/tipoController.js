@@ -17,11 +17,7 @@ router.get("/tipos",(req,res)=>{
 
 router.get("/tipos/cadastro",(req,res)=>{
 
-    var {codigo,descricao} = req.body;
-
-    Tipo.create({codigo:codigo, descricao:descricao}).then(()=>{
-        res.redirect("admin/tipos/cadastro");
-    });
+    res.render("admin/tipos/cadastro");
 });
 
 //formulario de edição
