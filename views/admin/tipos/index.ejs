@@ -23,6 +23,27 @@
                       </tr>
                     </thead>
                     <tbody>
+                        <% tipos.forEach(tipo=>{  %>
+                          <tr>
+                             <td><%= tipo.id %></td>
+                             <td><%= tipo.codigo %></td>
+                             <td><%= tipo.descricao %></td>
+                             <td>
+                               <a href="/tipos/atualizar/<%= tipo.id %>" class="btn btn-warning" >Editar</a>
+
+                               <form style="display: inline;" action="/tipo/apagar/" method="post">
+
+                                 <input type="hidden" value="<%= tipo.id %>" name="id">
+
+
+                                 <button class="btn btn-danger" type="submit">Deletar</button>
+                               </form>
+                              
+                             </td>
+
+
+                          </tr>
+                        <% }) %>
                       
                     </tbody>
                   </table>
