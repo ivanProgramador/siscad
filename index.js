@@ -20,6 +20,7 @@ const Produto = require("./models/Produto/Produto");
 const produtoController = require("./models/Produto/produtoController");
 const Tipo = require("./models/Tipo/Tipo");
 const tipoController = require("./models/Tipo/tipoController");
+const Produto_pedido = require('./models/Produto_pedido/Produto_pedido');
 
 app.use("/",tipoController);
 app.use("/",produtoController);
