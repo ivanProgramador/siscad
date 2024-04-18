@@ -12,7 +12,7 @@ const Produto = connection.define('produto',{
         allowNull:false
     },
     preco:{
-        type: Sequelize.DOUBLE(4),
+        type: Sequelize.DOUBLE(),
         allowNull:false
     }
 });

@@ -1,4 +1,44 @@
 <%- include('../../partials/header.ejs')-%>
 <%- include('../../partials/navbar.ejs')-%>
 
+<body>
+    <div class="container">
+        <div class="card mt-3">
+             <div class="card-header">
+                <h2>Edição de produtos</h2>
+             </div>
+             <div class="card-body">
+                <form  action="/produto/atualizar" method="post">
+
+                    <label for="codigo">Código</label>
+                    <input value="<%= produto.codigo %>"  class="form-control mt-3" type="text" name="codigo" id="codigo">
+
+                    <input type="hidden" value="<%= produto.id %>" name="id" id="id">
+
+                    <label for="descricao">Descrição</label>
+                    <input value="<%= produto.descricao %>" class="form-control mt-3" type="text" name="descricao" id="descricao">
+                    <label for="preco">Preço</label>
+                    <input value="<%= produto.preco %>" class="form-control mt-3" type="text" name="preco" id="preco">
+
+
+                    <select class="form-control mt-3" name="tipoId" id="tipoId">
+                           <% tipos.forEach(tipo=>{ %>
+                            <option class="form-control" value="<%= tipo.id %>"> <%= tipo.descricao %> </option>
+                           <%  }) %>
+                    </select>
+
+
+
+                    <button class="btn btn-success mt-3" type="submit">Atualizar</button>
+                    <a href="/produtos" class="btn btn-primary mt-3">Cancelar</a>
+                </form>
+             </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+
 <%- include('../../partials/footer.ejs')-%>

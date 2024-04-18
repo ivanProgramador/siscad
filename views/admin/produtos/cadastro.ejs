@@ -1,4 +1,41 @@
 <%- include('../../partials/header.ejs')-%>
 <%- include('../../partials/navbar.ejs')-%>
 
+<body>
+    <div class="container">
+        <div class="card mt-3">
+             <div class="card-header">
+                <h2>Cadastro de produtos</h2>
+             </div>
+             <div class="card-body">
+                <form  action="/produto/cadastrar" method="post">
+
+                    <label for="codigo">Código</label>
+                    <input class="form-control mt-3" type="text" name="codigo" id="codigo">
+                    <label for="descricao">Descrição</label>
+                    <input class="form-control mt-3" type="text" name="descricao" id="descricao">
+                    <label for="preco">Preço</label>
+                    <input class="form-control mt-3" type="text" name="preco" id="preco">
+
+
+                    <select class="form-control mt-3" name="tipoId" id="tipoId">
+                           <% tipos.forEach(tipo=>{ %>
+                            <option class="form-control" value="<%= tipo.id %>"> <%= tipo.descricao %> </option>
+                           <%  }) %>
+                    </select>
+
+
+
+                    <button class="btn btn-success mt-3" type="submit">Cadastrar</button>
+                    <button class="btn btn-primary mt-3" type="reset">Limpar</button>
+                </form>
+             </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+
 <%- include('../../partials/footer.ejs')-%>
