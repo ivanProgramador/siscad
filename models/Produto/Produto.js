@@ -18,7 +18,7 @@ const Produto = connection.define('produto',{
 });
 
 Produto.belongsTo(Tipo);
-// Produto.sync({force:false});
+Produto.sync({force:false});
 module.exports = Produto;
 
 

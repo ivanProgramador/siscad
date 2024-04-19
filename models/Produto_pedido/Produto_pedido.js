@@ -19,12 +19,15 @@ const Produto_pedido = connection.define('produto_pedido',{
     produto_codigo:{
         type: Sequelize.INTEGER,
         allownull:false
+    },
+    pedido_codigo:{
+        type: Sequelize.INTEGER,
+        allownull:false
     }
     
     
    
 });
 
-Produto_pedido.hasMany(Produto);
 Produto_pedido.sync({force:false});
 module.exports = Produto_pedido;

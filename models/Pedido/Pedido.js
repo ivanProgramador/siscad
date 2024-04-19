@@ -8,5 +8,5 @@ const Pedido = connection.define('pedido',{
     }
 });
 
-Tipo.sync({force:false});
-module.exports = pedido;
+Pedido.sync({force:false});
+module.exports = Pedido;
