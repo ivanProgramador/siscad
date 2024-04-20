@@ -1,0 +1,147 @@
+<%- include('../partials/header.ejs')-%>
+<%- include('../partials/navbar.ejs')-%>
+<body>
+
+    <div class="container ml-0">
+        <div class="row" >
+            <div class="col">
+
+                <button type="button" class="btn btn-primary">
+                    ID PEDIDO: <span class="badge badge-light"><%= pedido.id %></span>
+                </button>
+                <button type="button" class="btn btn-primary">
+                    CLIENTE : <span class="badge badge-light"><%= pedido.cliente %></span>
+                </button>
+                <button type="button" class="btn btn-primary">
+                    DATA HORA PEDIDO : <span class="badge badge-light"><%= pedido.createdAt %></span>
+                </button>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    
+    
+    <div class="container mt-3">
+        
+       
+
+        <div class="row">
+
+           
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Produtos disponiveis</h3>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                     <table class="table table-bodered">
+                        <thead>
+                            <tr>
+                                <td>id</td>
+                                <td>descrição</td>
+                                <td>Ação</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <% produtos.forEach(produto=>{ %> 
+                             <tr>
+                                <td><%= produto.id %></td>
+                                <td><%= produto.descricao %></td>
+                                <td >
+                                    <form  action="/adicionar_produto" method="post">
+
+                                        <input style="display: inline;" class="form-control col-md-8" type="number" name="quantidade" id="quantidade">
+
+                                        <input class="form-control" name="produto_codigo" type="hidden" value="<%= produto.codigo %>">
+
+                                        <input class="form-control" name="produto_descricao" type="hidden" value="<%= produto.descricao %>">
+
+                                        <input class="form-control" name="cliente" type="hidden" value="<%= pedido.cliente %>">
+
+                                        <input class="form-control" name="pedido_codigo" type="hidden" value="<%= pedido.id  %>">
+
+
+
+                                        <button  class="btn btn-success" type="submit" >Add</button>
+                                    </form>
+                                </td>
+                                
+                             </tr>
+                            <% }) %>
+                        </tbody>
+
+                     </table>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title" >Produtos do pedido</h3>
+                    </div>
+                </div>
+
+                <div class="card-body ">
+                     <table class="table table-bodered">
+                        <thead>
+                            <tr>
+                                <td>pedido</td>
+                                <td>descrição</td>
+                                <td>cliente</td>
+                                <td>qtd</td>
+                                <td>Ação</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% produtos_pedidos.forEach(produtos_pedido=>{%>
+                                <tr>
+                                    <td><%= produtos_pedido.pedido_codigo %></td>
+                                    <td><%= produtos_pedido.produto_descricao %></td>
+                                    <td><%= produtos_pedido.cliente %></td>
+                                    <td><%= produtos_pedido.quantidade %></td>
+                                    <td>
+                                        <form action="/apagar_produto_pedido" method="post">
+                                            <input type="hidden" name="id" value="<%= produtos_pedido.id %>" >
+                                            <button class="btn btn-danger" type="submit"> - </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <%  }) %>
+                        </tbody>
+                       
+
+
+                     </table>
+                </div>
+
+
+
+
+                
+            </div>
+
+           
+
+
+
+
+                
+            </div>
+
+
+        </div>
+
+
+
+
+        
+    </div>
+</body>
+
+<%- include('../partials/footer.ejs')-%>

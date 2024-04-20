@@ -3,7 +3,7 @@ const connection = require("../../database/database");
 
 const Pedido = connection.define('pedido',{
     cliente:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull:false
     }
 });

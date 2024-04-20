@@ -24,7 +24,10 @@ router.get('/produto/cadastro',(req,res)=>{
 
 router.post('/produto/cadastrar',(req,res)=>{
 
+   //verificar o erro que acontece quando um produto e cadastrado com , ao inves de .
     var{ codigo,descricao,preco,tipoId }= req.body;
+
+   
 
     Produto.create({
         codigo:codigo,
