@@ -20,6 +20,7 @@ const Produto = require("./models/Produto/Produto");
 const produtoController = require("./models/Produto/produtoController");
 const Tipo = require("./models/Tipo/Tipo");
 const Pedido = require("./models/Pedido/Pedido");
+const pedidoController = require("./models/Pedido/pedido_controller");
 const tipoController = require("./models/Tipo/tipoController");
 const Produto_pedido = require('./models/Produto_pedido/Produto_pedido');
 
@@ -30,6 +31,7 @@ const sequenciaController = require("./models/Sequencia/sequenciaController");
 app.use("/",tipoController);
 app.use("/",produtoController);
 app.use("/",sequenciaController);
+app.use("/",pedidoController);
 
 app.get("/",(req,res)=>{
     res.render("index");

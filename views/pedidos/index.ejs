@@ -1,0 +1,47 @@
+<%- include('../partials/header.ejs')-%>
+<%- include('../partials/navbar.ejs')-%>
+<body>
+   <div class="container">
+     <div class="row">
+         <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Lista de pedidos</h3>
+                   
+                </div>
+                <div class="card-body">
+                     <table class="table table-bordered" >
+                        <thead>
+                            <tr>
+                                <td>id</td>
+                                <td>cliente</td>
+                                <td>data / hora</td>
+                                <td>Ações</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% pedidos.forEach(pedido=>{  %>
+                                <tr>
+                                    <td><%= pedido.id %></td>
+                                    <td><%= pedido.cliente %></td>
+                                    <td><%= pedido.createdAt %></td>
+                                    <td>
+                                        <form action="/pedido_apagar" method="post">
+                                            <input type="hidden" name="id" value="<%= pedido.id %>">
+                                            <button class="btn btn-danger" type="submit">Deletar</button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            <% }) %>
+                        </tbody>
+                     </table>
+                </div>
+            </div>
+         </div>
+     </div>
+
+   </div>
+</body>
+
+<%- include('../partials/footer.ejs')-%>

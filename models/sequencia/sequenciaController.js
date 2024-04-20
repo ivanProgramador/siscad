@@ -67,7 +67,7 @@ router.post("/apagar_produto_pedido",(req,res)=>{
         res.redirect("/monta_pedido");
          
     })
-})
+});
 
 
 
