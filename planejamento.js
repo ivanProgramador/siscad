@@ -20,6 +20,7 @@ então ele envolve 3 tabelas
 quem manipula a tabela porduto pedido e a sequencia, qua não é uma tabela e sim um controller
 que tratves das dua funções cria ou desfaz a relação entre os pedidos e os produtos 
 
-
+Eu tenho que construir uma rota que delete o pedido e todos os pordutotos relacionado a ele 
+em cascata.para evitar sujeira no banco
 
 */

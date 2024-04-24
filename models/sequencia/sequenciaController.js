@@ -42,9 +42,9 @@ router.get("/monta_pedido",(req,res)=>{
 //rota de ação para adicionar um pedido 
 
 router.post('/gravar_pedido',(req,res)=>{
-    var {cliente} = req.body;
+    var {cliente,status} = req.body;
 
-    Pedido.create({cliente:cliente}).then(()=>{
+    Pedido.create({cliente:cliente,status:1}).then(()=>{
         res.redirect("/monta_pedido");
     })
 });
@@ -68,6 +68,19 @@ router.post("/apagar_produto_pedido",(req,res)=>{
          
     })
 });
+
+//rota que exclui o pedido todo
+router.post("/apagar_pedido",(req,res)=>{
+
+    var id_pedido = req.body.id_pedido;
+
+    Produto_pedido.destroy({where:{id_pedido:pedido_codigo}}).then(()=>{
+        res.redirect("/inicio_pedido");
+         
+    })
+});
+
+
 
 
 

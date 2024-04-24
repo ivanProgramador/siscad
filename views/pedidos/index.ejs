@@ -15,6 +15,7 @@
                             <tr>
                                 <td>id</td>
                                 <td>cliente</td>
+                                <td>status</td>
                                 <td>data / hora</td>
                                 <td>Ações</td>
                             </tr>
@@ -24,9 +25,11 @@
                                 <tr>
                                     <td><%= pedido.id %></td>
                                     <td><%= pedido.cliente %></td>
+                                    <td><%= pedido.status %></td>
                                     <td><%= pedido.createdAt %></td>
                                     <td>
-                                        <form action="/pedido_apagar" method="post">
+
+                             <form action="/pedido_apagar" method="post">
                                             <input type="hidden" name="id" value="<%= pedido.id %>">
                                             <button class="btn btn-danger" type="submit">Deletar</button>
                                         </form>
@@ -42,6 +45,8 @@
      </div>
 
    </div>
+
+  
 </body>
 
 <%- include('../partials/footer.ejs')-%>

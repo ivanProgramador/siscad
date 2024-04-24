@@ -79,6 +79,8 @@
                 </div>
             </div>
 
+
+
             <div class="col-md-6">
 
                 <div class="card">
@@ -114,16 +116,23 @@
                                 </tr>
                             <%  }) %>
                         </tbody>
-                       
-
-
                      </table>
-                </div>
-
-
-
-
+                </div>    
                 
+                <div class="card-footer">
+
+                    <form action="#" method="post">
+                        <input type="hidden" class="form-control" name="id" value="<%= pedido.id %>" >
+                        <button class="btn btn-success" >Lançar comanda</button>
+                    </form>
+                    <form action="/apagar_pedido" method="post">
+                        <input type="hidden" class="form-control" name="id_pedido" value="<%= pedido.id %>" >
+                        <button class="btn btn-success" >Excluir pedido</button>
+                    </form>
+
+                    
+                      
+                </div>
             </div>
 
            
