@@ -3,7 +3,9 @@ const express = require("express");
 const router = express.Router();
 const Produto_pedido = require("../Produto_pedido/Produto_pedido");
 const Pedido = require("../Pedido/Pedido");
-const { where } = require("sequelize");
+const { where, ARRAY } = require("sequelize");
+
+
 
 
 
@@ -17,11 +19,30 @@ const { where } = require("sequelize");
 
 //rota de exibição 
 
-router.get('/lista_comandas',(req,res)=>{
+ router.get('/lista_comandas',(req,res)=>{
 
-   //buscar pediso com o status 2
-   //buscar os prdutos que pertencem a esse pedido 
-   //retornar os dados encontrados em json
+   
+   async function pegaPedido(){
+          Produto_pedido.findAll().then(produto_pedido=>{
+
+            console.log(produto_pedido);
+
+          })
+         
+
+
+
+   }
+
+   pegaPedido();
+    
+
+   
+
+
+
+    
+  
 
 
 })

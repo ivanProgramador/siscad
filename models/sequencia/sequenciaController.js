@@ -76,7 +76,7 @@ router.post("/lanca_comanda",(req,res)=>{
   var {id_pedido} = req.body;
 
   Pedido.update({status:2},{where:{id:id_pedido}}).then(()=>{
-      res.redirect("/monta_pedido");
+      res.redirect("/inicio_pedido");
   })
 
   
