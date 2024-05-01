@@ -69,16 +69,45 @@ router.post("/apagar_produto_pedido",(req,res)=>{
     })
 });
 
+
+
+
+
+
 //rota que exclui o pedido todo
 router.post("/apagar_pedido",(req,res)=>{
 
-    var id_pedido = req.body.id_pedido;
+   var {id_pedido} = req.body;
 
-    Produto_pedido.destroy({where:{id_pedido:pedido_codigo}}).then(()=>{
+    Pedido.destroy({
+    where: {
+      id: id_pedido,
+    }
+  }).then(()=>{
+
+    Produto_pedido.destroy(
+        {where: {
+            pedido_codigo: id_pedido,
+          }
+        }
+    ).then(()=>{
+
         res.redirect("/inicio_pedido");
-         
-    })
-});
+
+    }
+
+    )
+
+
+
+  
+  })
+
+  
+
+})
+       
+   
 
 
 

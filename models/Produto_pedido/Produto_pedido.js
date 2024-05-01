@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const connection = require("../../database/database");
 const Produto = require("../Produto/Produto");
+const Pedido = require("../Pedido/Pedido");
 
 const Produto_pedido = connection.define('produto_pedido',{
 
@@ -28,6 +29,7 @@ const Produto_pedido = connection.define('produto_pedido',{
     
    
 });
+
 
 Produto_pedido.sync({force:false});
 module.exports = Produto_pedido;
