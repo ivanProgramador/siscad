@@ -14,5 +14,5 @@ const Pedido = connection.define('pedido',{
 });
 
 
-Pedido.sync({force:true});
+//Pedido.sync({force:false});
 module.exports = Pedido;

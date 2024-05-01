@@ -23,6 +23,7 @@ const Pedido = require("./models/Pedido/Pedido");
 const pedidoController = require("./models/Pedido/pedido_controller");
 const tipoController = require("./models/Tipo/tipoController");
 const Produto_pedido = require('./models/Produto_pedido/Produto_pedido');
+const comandaController = require('./models/comanda/comandaController');
 
 //rota de sequencia 
 
@@ -32,6 +33,7 @@ app.use("/",tipoController);
 app.use("/",produtoController);
 app.use("/",sequenciaController);
 app.use("/",pedidoController);
+app.use("/",comandaController);
 
 app.get("/",(req,res)=>{
     res.render("index");

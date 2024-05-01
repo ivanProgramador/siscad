@@ -29,12 +29,14 @@
                                     <td><%= pedido.createdAt %></td>
                                     <td>
 
-                             <form action="/pedido_apagar" method="post">
-                                            <input type="hidden" name="id" value="<%= pedido.id %>">
-                                            <button class="btn btn-danger" type="submit">Deletar</button>
+                                        <form style="display: inline;" action="/apagar_pedido" method="post">
+
+                                            <input type="hidden" class="form-control" name="id_pedido" value="<%= pedido.id %>" >
+                    
+                                            <button class="btn btn-success" >Excluir pedido</button>
+                    
                                         </form>
-                                    </td>
-                                </tr>
+                    
 
                             <% }) %>
                         </tbody>

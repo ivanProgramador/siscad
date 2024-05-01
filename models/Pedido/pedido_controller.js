@@ -10,14 +10,30 @@ router.get("/pedidos",(req,res)=>{
     })
 });
 
-router.post("/pedido_apagar",(req,res)=>{
-    var id = req.body.id;
+router.post("/apagar_pedido",(req,res)=>{
 
-    Pedido.destroy({where:{id:id}}).then(()=>{
-         res.redirect("/pedidos");
-    });
-
-});
+    var {id_pedido} = req.body;
+ 
+     Pedido.destroy({
+     where: {
+       id: id_pedido,
+     }
+   }).then(()=>{
+ 
+     Produto_pedido.destroy(
+         {where: {
+             pedido_codigo: id_pedido,
+           }
+         }
+     ).then(()=>{
+ 
+         res.redirect("/inicio_pedido");
+ 
+     }
+ 
+     )  
+   })
+ })
 
 router.get('/pedidos_detalhe',(req,res)=>{
     var pedido_id = req.body.id;

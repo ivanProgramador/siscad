@@ -25,11 +25,8 @@ const Produto_pedido = connection.define('produto_pedido',{
         type: Sequelize.INTEGER,
         allownull:false
     }
-    
-    
-   
 });
 
 
-Produto_pedido.sync({force:false});
+//Produto_pedido.sync({force:false});
 module.exports = Produto_pedido;

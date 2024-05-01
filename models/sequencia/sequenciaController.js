@@ -69,9 +69,19 @@ router.post("/apagar_produto_pedido",(req,res)=>{
     })
 });
 
+//rota que grava 2 no status do pedido fazendo a comanda ser lançada
 
+router.post("/lanca_comanda",(req,res)=>{
 
+  var {id_pedido} = req.body;
 
+  Pedido.update({status:2},{where:{id:id_pedido}}).then(()=>{
+      res.redirect("/monta_pedido");
+  })
+
+  
+
+})
 
 
 //rota que exclui o pedido todo
@@ -96,18 +106,12 @@ router.post("/apagar_pedido",(req,res)=>{
 
     }
 
-    )
-
-
-
-  
+    )  
   })
-
-  
-
 })
        
-   
+
+
 
 
 

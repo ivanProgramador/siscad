@@ -121,10 +121,14 @@
                 
                 <div class="card-footer">
 
-                    <form style="display: inline;" action="#" method="post">
-                        <input type="hidden" class="form-control" name="id" value="<%= pedido.id %>" >
+                    <form style="display: inline;" action="/lanca_comanda" method="post">
+
+                        <input type="hidden" class="form-control" name="id_pedido" value="<%= pedido.id %>" >
+
                         <button class="btn btn-success" >Lançar comanda</button>
+
                     </form>
+                    
                     <form style="display: inline;" action="/apagar_pedido" method="post">
 
                         <input type="hidden" class="form-control" name="id_pedido" value="<%= pedido.id %>" >
