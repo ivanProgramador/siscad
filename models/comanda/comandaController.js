@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const Produto_pedido = require("../Produto_pedido/Produto_pedido");
 const Pedido = require("../Pedido/Pedido");
-const { where, ARRAY } = require("sequelize");
+const { where } = require("sequelize");
 
 
 
@@ -21,30 +21,32 @@ const { where, ARRAY } = require("sequelize");
 
  router.get('/lista_comandas',(req,res)=>{
 
-   
-   async function pegaPedido(){
-          Produto_pedido.findAll().then(produto_pedido=>{
-
-            console.log(produto_pedido);
-
-          })
-         
-
-
-
-   }
-
-   pegaPedido();
     
 
-   
+       Pedido.findAll({where:{status:2}}).then(pedidos=>{
+
+           pedidos.map(pedido=>{
+            
+              Produto_pedido.findAll({raw:true,where:{pedido_codigo: pedido.id},attributes:['produto_descricao','quantidade']}).then(produtos_pedido=>{
+
+               var comanda = {
+                  numero_pedido: pedido.id,
+                  pedido_cliente: pedido.cliente,
+                  data_hora: pedido.createdAt,
+                  produtos_comanda: produtos_pedido
+               }
+
+                res.send(comanda);
+
+              });
+             
+           });
+       })
+
 
 
 
     
-  
-
-
 })
 
 module.exports = router;
