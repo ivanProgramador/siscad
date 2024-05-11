@@ -1,0 +1,77 @@
+<%- include('../partials/header.ejs')-%>
+
+
+
+
+
+
+<% pedidos.forEach(pedido=>{ %>
+
+    <div  class="card mt-4 ml-1 float-sm-left col-md-2 ">
+
+        <div class="card-header">
+            <p>Cliente: <%= pedido.cliente %></p>
+            <p>Numero: <%= pedido.id %></p>
+            <p>Hora: <%= pedido.createdAt.getHours()%>:<%= pedido.createdAt.getMinutes() %> </p>
+           
+        </div>
+
+        <div class="card-body" style="max-height: 200px; overflow-y: scroll; scrollbar-width: thin; padding: 0px;" >
+         
+
+           <% produtos_pedidos.forEach(produto_pedido=>{ %> 
+
+             <ul class="list-group" style="margin-top: 1px;">
+              <% if( produto_pedido.pedido_codigo == pedido.id){ %>
+                
+                <li class="list-group-item">
+
+                    <p> produto: <%= produto_pedido.produto_descricao %>  </p>
+                    <p> quantidade: <%= produto_pedido.quantidade %>      </p>
+                   
+                   
+                </li>
+
+              <% } %> 
+            </ul>
+          
+            
+            
+           <% }) %>
+            
+
+
+
+        </div>
+
+        <div class="card-footer">
+
+        </div>
+     </div>
+
+
+
+
+
+ <% }) %>
+     
+
+
+<script>
+
+setInterval(() => {
+    fetch('/lista_comandas')
+        .then(response => response.text())
+        .then(html => {
+            document.querySelector('body').innerHTML = html;
+        });
+}, 5000);
+
+
+</script>
+
+
+
+
+
+<%- include('../partials/footer.ejs')-%>

@@ -3,11 +3,6 @@ const express = require("express");
 const router = express.Router();
 const Produto_pedido = require("../Produto_pedido/Produto_pedido");
 const Pedido = require("../Pedido/Pedido");
-const { where } = require("sequelize");
-
-
-
-
 
 
 /*
@@ -21,32 +16,19 @@ const { where } = require("sequelize");
 
  router.get('/lista_comandas',(req,res)=>{
 
-    
 
-       Pedido.findAll({where:{status:2}}).then(pedidos=>{
-
-           pedidos.map(pedido=>{
-            
-              Produto_pedido.findAll({raw:true,where:{pedido_codigo: pedido.id},attributes:['produto_descricao','quantidade']}).then(produtos_pedido=>{
-
-               var comanda = {
-                  numero_pedido: pedido.id,
-                  pedido_cliente: pedido.cliente,
-                  data_hora: pedido.createdAt,
-                  produtos_comanda: produtos_pedido
-               }
-
-                res.send(comanda);
-
-              });
-             
-           });
-       })
+   Pedido.findAll({where:{status:2}}).then(pedidos=>{
 
 
+       Produto_pedido.findAll().then(produtos_pedidos=>{
+
+         res.render('comandas/painel_index',{pedidos:pedidos,produtos_pedidos:produtos_pedidos});
 
 
-    
-})
+       });
+   })
+
+
+ });
 
 module.exports = router;

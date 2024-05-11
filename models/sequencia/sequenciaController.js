@@ -32,7 +32,7 @@ router.get("/monta_pedido",(req,res)=>{
     
       Produto.findAll().then(produtos=>{
         var pedido_atual = pedido.id;
-        Produto_pedido.findAll().then(produtos_pedidos=>{
+        Produto_pedido.findAll({where:{pedido_codigo: pedido_atual}}).then(produtos_pedidos=>{
             res.render("sequencia/monta_pedido",{pedido:pedido,produtos:produtos,produtos_pedidos:produtos_pedidos});
         })
       })
