@@ -1,22 +1,21 @@
-<%- include('../partials/header.ejs')-%>
+<%- include('../partials/painel_header.ejs')-%>
 
 
-
-
-
-
+<nav id="linha-superior" class="navbar">
+    <a class="navbar-brand" href="#"></a>
+  </nav>
 <% pedidos.forEach(pedido=>{ %>
 
-    <div  class="card mt-4 ml-1 float-sm-left col-md-2 ">
+    <div id="comanda" class="card mt-4 ml-1 float-sm-left col-md-2 ">
 
-        <div class="card-header">
+        <div class="card-header mt-1">
             <p>Cliente: <%= pedido.cliente %></p>
             <p>Numero: <%= pedido.id %></p>
             <p>Hora: <%= pedido.createdAt.getHours()%>:<%= pedido.createdAt.getMinutes() %> </p>
            
         </div>
 
-        <div class="card-body" style="max-height: 200px; overflow-y: scroll; scrollbar-width: thin; padding: 0px;" >
+        <div id="comanda_corpo" class="card-body" style="max-height: 200px; overflow-y: scroll; scrollbar-width: thin; padding: 0px;" >
          
 
            <% produtos_pedidos.forEach(produto_pedido=>{ %> 
@@ -45,6 +44,10 @@
         </div>
 
         <div class="card-footer">
+            <form action="" method="post">
+                <button class="btn btn-secondary float-sm-left " style="width: 49%; margin-left: 0px; margin-right: 1%;"  type="button">Expedir</button>
+                <button class="btn btn-secondary float-sm-right " style="width: 49%;" type="button">Cancelar</button>
+            </form>
 
         </div>
      </div>
@@ -74,4 +77,4 @@ setInterval(() => {
 
 
 
-<%- include('../partials/footer.ejs')-%>
+<%- include('../partials/painel_footer.ejs')-%>
