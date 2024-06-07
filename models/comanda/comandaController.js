@@ -17,6 +17,7 @@ const Pedido = require("../Pedido/Pedido");
  router.get('/lista_comandas',(req,res)=>{
 
 
+
    Pedido.findAll({where:{status:2}}).then(pedidos=>{
 
 
@@ -39,7 +40,14 @@ const Pedido = require("../Pedido/Pedido");
 
 
        });
-   })
+  });
+
+ router.post('/expedir',(req,res)=>{
+   var produto_exped = req.body.Pedido;
+
+   Produto_pedido.update({where:{id:id}})
+    
+ })
 
 
 

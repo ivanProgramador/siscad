@@ -23,4 +23,16 @@ que tratves das dua funções cria ou desfaz a relação entre os pedidos e os p
 Eu tenho que construir uma rota que delete o pedido e todos os produtos relacionados a ele 
 em cascata.para evitar sujeira no banco
 
+Venda 
+O numero da venda e gerando quando o caixa clica em iniciar pedido  a venda tem numero data,hora e valor
+o valor de uma venda e determinado pela soma dos preços dos produtos associados a ela. então o produto pedido 
+agora precisa ter o campo venda.
+
+depois da associação eu preciso calcular as quantidades para chegar ao valor final   
+
+
+
+
+
+
 */
